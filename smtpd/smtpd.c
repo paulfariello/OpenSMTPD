@@ -53,6 +53,7 @@
 #include "smtpd.h"
 #include "log.h"
 #include "ssl.h"
+#include "sasl.h"
 
 static void parent_imsg(struct mproc *, struct imsg *);
 static void usage(void);
@@ -1562,7 +1563,7 @@ parent_auth_user(const char *username, const char *password)
 	(void)strlcpy(user, username, sizeof(user));
 	(void)strlcpy(pass, password, sizeof(pass));
 
-	ret = auth_userokay(user, NULL, "auth-smtp", pass);
+	ret = auth_sasl(user, pass);
 	if (ret)
 		return LKA_OK;
 	return LKA_PERMFAIL;
