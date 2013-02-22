@@ -79,6 +79,8 @@ SRCS+=		scheduler_null.c
 SRCS+=		scheduler_proc.c
 
 SRCS+=		stat_ramstat.c
+# sasl auth
+SRCS+=		sasl.c
 
 MAN=		sendmail.8 smtpd.8 smtpd.conf.5 table.5
 BINDIR=		/usr/sbin
